@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+	android:background="#3b5998"
+	android:paddingLeft="30dp"
+	android:paddingRight="30dp"
+	android:gravity="center"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login to your account"
+        android:textColor="#ffffff"
+        android:textSize="25sp" />
+    
+    <EditText
+        android:layout_height="50dp"
+        android:layout_width="300dp"
+        android:background="#ffffff"
+        android:id="@+id/userNameID"
+        android:hint="Please enter username"
+        android:layout_marginTop="20dp"
+        android:textColorHint="#343434"
+    />
+    <EditText
+        android:layout_height="50dp"
+        android:layout_width="300dp"
+        android:background="#ffffff"
+        android:id="@+id/password"
+        android:hint="please enter password"
+        android:layout_marginTop="10dp"
+        android:textColorHint="#343434"
+    />
+     <Button
+        android:id="@+id/loginBtn1"
+        android:background="#a5e2ab"
+        android:layout_height="50dp"
+        android:layout_width="300dp"
+        android:text="Login"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#ffffff"
+    />
+    
+    <TextView
+        android:id="@+id/createAccount"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:text="Create a new account!"
+        android:gravity="center"
+    />
+
+</LinearLayout>

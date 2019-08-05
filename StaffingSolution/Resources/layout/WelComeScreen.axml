@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+	android:background="#4879db"
+	android:paddingLeft="30dp"
+	android:paddingRight="30dp"
+	android:gravity="center"
+    >
+
+    <TextView
+		android:text="Staffing"
+		android:id="@+id/TextView01"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAlignment="center"
+		android:textColor="#fff"
+		android:textSize="40dp"
+		android:layout_marginBottom="10dp"
+		android:textStyle="bold"/>
+
+    
+
+    <TextView
+		android:text="One Solution for employee and job seeker"
+		android:id="@+id/slogan"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAlignment="center"
+		android:textColor="#fff"
+		android:textSize="20dp"
+		android:layout_marginBottom="10dp"
+		android:textStyle="bold"/>
+
+     <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login/Register"
+        android:textSize="30dp"
+        android:textColor="#fff"
+        android:background="#343434"
+        android:padding="20dp"
+    />   
+
+</LinearLayout>
