@@ -6,10 +6,11 @@ using Android.Content;
 
 using Android.Database.Sqlite;
 using Android.Database;
+using Android.Views;
 
 namespace StaffingSolution
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", MainLauncher = true)]
     public class MainActivity : Activity
     {
         Button myLoginBtn;
@@ -37,5 +38,39 @@ namespace StaffingSolution
 
             //throw new System.NotImplementedException();
         }
+
+        
+        //Android.Widget.SearchView searchView;
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            // set the menu layout on Main Activity  
+            MenuInflater.Inflate(Resource.Menu.menu1, menu);
+
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.homepage:
+                    {
+                        // add your code  
+                        Intent listUsreScreem = new Intent(this, typeof(ProfileUpdate));
+                        StartActivity(listUsreScreem);
+                        return true;
+                    }
+                case Resource.Id.viewList:
+                    {
+                        // add your code  
+                        Intent listUsreScreem = new Intent(this, typeof(ViewAllUsersList));
+                        StartActivity(listUsreScreem);
+                        return true;
+                    }
+            }
+
+            return base.OnOptionsItemSelected(item);
+        }
+        /**/
     }
 }

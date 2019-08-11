@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">StaffingSolution</string>
     <string name="action_settings">Settings</string>
+    <string name="menuItem1">Item 1</string>
+    <string name="menuItem2">Item 2</string>
+    <string name="menuItem3">Item 3</string>
+    <string name="user_prompt">Choose Account type</string>
+    <string-array name="user_type">
+      <item>Employee</item>
+      <item>Employer</item>
+    </string-array>
+
 </resources>

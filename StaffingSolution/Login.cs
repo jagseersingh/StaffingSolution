@@ -68,15 +68,31 @@ namespace StaffingSolution
             if (loginStatus)
             {
 
-                bool userStatus = tempDb.checkLoginCredentials(uname, upass);
+                string userStatus = tempDb.checkLoginCredentials(uname, upass);
 
-                if (userStatus)
+                System.Console.WriteLine( " this is user status " + userStatus);
+
+                if (userStatus != "")
                 {
+                    
 
-                    //Intent listUsreScreem = new Intent(this, typeof(ViewUsers));
-                    Intent listUsreScreem = new Intent(this, typeof(ViewAllUsersList));
-                    listUsreScreem.PutExtra("userName", uname);
-                    StartActivity(listUsreScreem);
+                    System.Environment.SetEnvironmentVariable("username", uname);
+                    System.Environment.SetEnvironmentVariable("userpass", upass);
+
+                    if (userStatus == "employe")    // employe
+                    {// employe screen
+                        System.Console.Write("Employe login");
+                        Intent listUsreScreem = new Intent(this, typeof( ProfileUpdate ));
+                        listUsreScreem.PutExtra("userName", uname);
+                        StartActivity(listUsreScreem);
+                    }
+                    else {  // employer
+                        System.Console.Write("Employer login");
+                        Intent listUsreScreem = new Intent(this, typeof( ViewAllUsersList ));
+                        listUsreScreem.PutExtra("userName", uname);
+                        StartActivity(listUsreScreem);
+                    }
+                    
                 }
                 else
                 {

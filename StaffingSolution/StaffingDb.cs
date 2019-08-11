@@ -14,6 +14,7 @@ using System.Collections;
 using Android.Database.Sqlite;
 using Android.Database;
 
+// database file
 namespace StaffingSolution
 {
     class StaffingDb : SQLiteOpenHelper
@@ -29,6 +30,7 @@ namespace StaffingSolution
         private const string LNAME = "lname";
         private const string AGE = "age";
         private const string EMAILID = "email";
+        private const string userType = "userType"; // 1,2
         private const string PASSWORD = "password";
         private const string userStatus = "userStatus";
 
@@ -39,6 +41,7 @@ namespace StaffingSolution
             + LNAME + " TEXT,"
             + AGE + " TEXT,"
             + EMAILID + " TEXT,"
+            + userType + " TEXT,"
             + userStatus + " Text,"
             + PASSWORD + " TEXT)";
 
@@ -57,7 +60,7 @@ namespace StaffingSolution
         }
 
 
-        public void insertUserRecord(string fname, string lname, string age, string emailId, string password) {
+        public void insertUserRecord(string fname, string lname, string age, string emailId, string password , string type) {
             int available = 0;
 
             String insertSQL = "insert into " + userTable + " values (" +
@@ -66,8 +69,11 @@ namespace StaffingSolution
                 "'" + lname + "'" + "," +
                 "'" + age + "'" + "," +
                 "'" + emailId + "'" + "," +
+                "'" + type + "'" + "," +
                 "'" + available + "'" + "," +
                 "'" + password + "'" + ");";
+
+            
 
             System.Console.WriteLine(" Insert SQL " + insertSQL);
 
@@ -76,27 +82,86 @@ namespace StaffingSolution
            // return true;
         }
 
-        public Boolean checkLoginCredentials(String emailId, String password)
+        public List<String> getUserDetails(string username) {
+            List<String> userDetail = new List<String>();
+
+            string query = "select * from " + userTable + " where " + EMAILID + "='"+username+"'";
+            System.Console.WriteLine(query);
+
+            ICursor  result =  myDBObj.RawQuery(query, null);
+            String fnamefromDB = "";
+            String lnamefromDB = "";
+            String emailfromDB = "";
+            String agefromDB = "";
+            String passwordfromDB = "";
+
+            while (result.MoveToNext()) {
+
+                fnamefromDB = "";
+                fnamefromDB = result.GetString(result.GetColumnIndexOrThrow(FNAME));
+                lnamefromDB = result.GetString(result.GetColumnIndexOrThrow(LNAME));
+                emailfromDB = result.GetString(result.GetColumnIndexOrThrow(EMAILID));
+                agefromDB = result.GetString(result.GetColumnIndexOrThrow(AGE));
+                passwordfromDB = result.GetString(result.GetColumnIndexOrThrow(PASSWORD));
+                //items.Add( fnamefromDB );
+
+                System.Console.WriteLine("user found list " + fnamefromDB + ", " + lnamefromDB + ", " + emailfromDB + ", " + Resource.Drawable.nouser );
+
+                
+
+                System.Console.WriteLine("User is being fetched.." + fnamefromDB + " \n");
+            }
+
+            userDetail = new List<String>() { fnamefromDB, lnamefromDB, agefromDB , emailfromDB, passwordfromDB };
+
+            return userDetail;
+        }
+
+        public Boolean updateUserRecord(string fname, string lname, string age, string emailId, string password)
         {
-            string selectRecord = "Select " + ColumnID + " from " + userTable + "  Where  "
+            String insertSQL = "update " + userTable + " set " +
+                FNAME + " = '" + fname + "'" + "," +
+                LNAME + " = '" + lname + "'" + "," +
+                AGE + " = '" + age + "'" + "," +
+                PASSWORD + " = '" + password + "'  WHERE " +
+                EMAILID + " = '" + emailId + "'";
+
+            System.Console.WriteLine(" Insert SQL " + insertSQL);
+
+            myDBObj.ExecSQL(insertSQL);
+
+            return true;
+
+        }
+        public string checkLoginCredentials(String emailId, String password)
+        {
+            string selectRecord = "Select " + ColumnID + ",userType  from " + userTable + "  Where  "
                 + EMAILID + " = '" + emailId + "' and "
                 + PASSWORD + " = '" + password + "'";
 
             System.Console.WriteLine(selectRecord);
 
             ICursor result = myDBObj.RawQuery(selectRecord, null);
+            string uT = "";
+            while (result.MoveToNext())
+            {
+                uT = result.GetString(result.GetColumnIndexOrThrow("userType"));
+            }
 
-            if (result.Count > 0)
+
+                if (result.Count > 0)
             {
 
                 System.Console.WriteLine("Email found");
-                return true;
+                //return true;
+                
             }
             else
             {
                 System.Console.WriteLine("Not Email found");
-                return false;
+                //return false;
             }
+            return uT;
         }
 
         public List<SingleUser> getAllusers()
@@ -107,19 +172,19 @@ namespace StaffingSolution
 
             ICursor result = myDBObj.RawQuery(sqlQuery, null);
 
-            // string IDfromDB = "";
+            
             string fnamefromDB = "";
             string lnamefromDB = "";
             string emailfromDB = "";
-            // string agefromDB = "";
-            //string passwordfromDB = "";
-
+            
             ArrayList items = new ArrayList();
 
             //List<String> myViewList = new List<String>();
             List<SingleUser> myViewList = new List<SingleUser>();
 
-            int i = 0;
+            int i = 0 ;
+            int uid = 0;
+
             while (result.MoveToNext())
             {
                 
@@ -127,17 +192,17 @@ namespace StaffingSolution
                 fnamefromDB = result.GetString(result.GetColumnIndexOrThrow(FNAME));
                 lnamefromDB = result.GetString(result.GetColumnIndexOrThrow(LNAME));
                 emailfromDB = result.GetString(result.GetColumnIndexOrThrow(EMAILID));
+                uid = result.GetInt(result.GetColumnIndexOrThrow(ColumnID));
                 //items.Add( fnamefromDB );
 
-                System.Console.WriteLine("user found list " + fnamefromDB);
+                System.Console.WriteLine("user found list " + fnamefromDB +", "+ lnamefromDB + ", " + emailfromDB + ", " + Resource.Drawable.nouser + ", " + uid);
 
-                //myViewList.Add(fnamefromDB + " " + i);
+                myViewList.Add(new SingleUser(fnamefromDB, lnamefromDB, emailfromDB, Resource.Drawable.nouser, uid));
 
-
-                myViewList.Add(new SingleUser(fnamefromDB, lnamefromDB, emailfromDB, Resource.Drawable.abc_ab_share_pack_mtrl_alpha));
-                System.Console.WriteLine(fnamefromDB + " " + i);
+                System.Console.WriteLine("User is being fetched.." + fnamefromDB + " \n");
 
                 i++;
+
             }
 
             System.Console.WriteLine("user list above this");

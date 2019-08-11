@@ -19,16 +19,19 @@
         android:id="@+id/fname"
         android:layout_height="50dp"
         android:layout_width="300dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#000"
         android:background="#ffffff"
         android:hint="First Name"
-        android:layout_marginTop="20dp"
         android:textColorHint="#343434"
+        
     />
     <EditText
         android:layout_height="50dp"
         android:layout_width="300dp"
         android:background="#ffffff"
         android:textColorHint="#343434"
+        android:textColor="#000"
         android:id="@+id/lname"
         android:hint="Last Name"
         android:layout_marginTop="10dp"
@@ -41,6 +44,7 @@
         android:hint="Age"
         android:layout_marginTop="20dp"
         android:textColorHint="#343434"
+        android:textColor="#000"
     />
     <EditText
         android:layout_height="50dp"
@@ -50,6 +54,7 @@
         android:hint="Email Id"
         android:layout_marginTop="20dp"
         android:textColorHint="#343434"
+        android:textColor="#000"
     />
     <EditText
         android:layout_height="50dp"
@@ -59,7 +64,32 @@
         android:hint="Password"
         android:layout_marginTop="20dp"
         android:textColorHint="#343434"
+        android:textColor="#000"
     />
+
+    
+
+   
+    <RadioGroup
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/userTypeField"
+        android:checkedButton="@id/employe"
+        >
+          <RadioButton android:id="@+id/employe"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Employe"
+            
+              />
+          <RadioButton android:id="@+id/employer"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Employer" />
+    </RadioGroup>
+    
      <Button
         android:id="@+id/loginBtn1"
         android:background="#a5e2ab"

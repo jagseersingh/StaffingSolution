@@ -17,14 +17,19 @@ namespace StaffingSolution
         public String fname;
         public String lname;
         public String email;
+        public int userId;
         public int userpic;
+        public int movtoselect;
 
-        public SingleUser(string argFname, string argLname, string argEmail, int argUserpic)
+        public SingleUser(string argFname, string argLname, string argEmail, int argUserpic , int argusId)
         {
             this.fname = argFname;
             this.lname = argLname;
             this.email = argEmail;
             this.userpic = argUserpic;
+            this.userId = argusId;
+            this.movtoselect = argusId;
+            System.Console.WriteLine(" user account id" + argusId);
         }
     }
 }

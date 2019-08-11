@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace StaffingSolution
 {
-    [Activity(Label = "Activity1")]
+    [Activity(Label = "Register")]
     public class Register : Activity
     {
         Button registerButton;
@@ -23,8 +23,7 @@ namespace StaffingSolution
         EditText password;
 
         Android.App.AlertDialog.Builder myAlert;
-        StaffingDb tempDb;
-
+        StaffingDb tempDb;        
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -41,14 +40,35 @@ namespace StaffingSolution
             emailId = FindViewById<EditText>(Resource.Id.emailId);
             password = FindViewById<EditText>(Resource.Id.password);
 
+            
+
             registerButton = FindViewById<Button>(Resource.Id.loginBtn1);
 
+
+            
+
+            //FindViewById<RadioButton>(Resource.Id.)
+
+            //Spinner spinner1 = FindViewById<Spinner>(Resource.Id.userAccountType);
+
+            //spinner1.ItemSelected += Spinner1_ItemSelected;
+
+            //System.Console.WriteLine(spinner1.get);
+
+            //var usertype = spinner1.getSelectedItem();
+
+            //System.Console.WriteLine(usertype);
 
             accExist.Click += AccExist_Click;
             registerButton.Click += RegisterButton_Click;
 
 
 
+        }
+
+        private void Spinner1_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            //throw new NotImplementedException();
         }
 
         private void RegisterButton_Click(object sender, EventArgs e)
@@ -58,6 +78,23 @@ namespace StaffingSolution
             var U_age = age.Text;
             var U_emailId = emailId.Text;
             var U_password = password.Text;
+
+
+            RadioGroup rg1 = FindViewById<RadioGroup>(Resource.Id.userTypeField);
+            String duserType;
+            string userType;
+
+            
+            duserType = FindViewById<RadioButton>(rg1.CheckedRadioButtonId).Text;
+
+            if (duserType == "Employer")
+            {
+                userType = "employer";
+            }
+            else {
+                userType = "employe";
+            }
+
 
             myAlert = new Android.App.AlertDialog.Builder(this);
 
@@ -83,7 +120,9 @@ namespace StaffingSolution
 
                 System.Console.WriteLine(U_fname + "," + U_lname + "," + U_age + "," + U_emailId + "," + U_password);
 
-                tempDb.insertUserRecord( U_fname, U_lname, U_age, U_emailId, U_password );
+                //int userType = 1;
+
+                tempDb.insertUserRecord( U_fname, U_lname, U_age, U_emailId, U_password , userType );
                 // all fields are entered just to save the data now
                 System.Console.WriteLine("Record Inserted");
 

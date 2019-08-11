@@ -60,6 +60,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProfileUpdate.cs" />
     <Compile Include="Register.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="MainActivity.cs" />
@@ -67,6 +68,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingleUser.cs" />
     <Compile Include="StaffingDb.cs" />
+    <Compile Include="TabViewAllUsersList.cs" />
+    <Compile Include="TabViewAvailableUserList.cs" />
+    <Compile Include="TabViewSelectedList.cs" />
     <Compile Include="UserAdapter.cs" />
     <Compile Include="ViewAllUsersList.cs" />
   </ItemGroup>
@@ -123,13 +127,7 @@
     <AndroidResource Include="Resources\layout\StatusUpdateScreen.axml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\UserProfileEditScreen.axml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\UserProfileScreen.axml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\UsersCustomListScreen.axml" />
+    <AndroidResource Include="Resources\layout\TabSelectedList.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\WelComeScreen.axml" />
@@ -140,7 +138,41 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Drawable\nouser.jpg" />
+    <AndroidResource Include="Resources\Menu\menu1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\nouser.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\MainFragment.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\FMlayout.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\TabAllUsers.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\xml\file_paths.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\TabAvailable.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Menu\loggedIn.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\UserProfile.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
