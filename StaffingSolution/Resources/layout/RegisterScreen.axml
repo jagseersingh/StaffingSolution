@@ -7,14 +7,12 @@
     android:gravity="center"
     android:background="#3b5998"
     >
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register"
         android:textColor="#ffffff"
         android:textSize="35sp" />
-    
     <EditText
         android:id="@+id/fname"
         android:layout_height="50dp"
@@ -66,10 +64,6 @@
         android:textColorHint="#343434"
         android:textColor="#000"
     />
-
-    
-
-   
     <RadioGroup
         android:layout_width="300sp"
         android:layout_height="wrap_content"
@@ -78,11 +72,11 @@
         android:id="@+id/userTypeField"
         android:checkedButton="@id/employe"
         >
-          <RadioButton android:id="@+id/employe"
+       
+         <RadioButton android:id="@+id/employe"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="Employe"
-            
+              android:text="Employe"   
               />
           <RadioButton android:id="@+id/employer"
               android:layout_width="wrap_content"
@@ -107,5 +101,4 @@
         android:text="Already have a account"
         android:gravity="center"
     />
-
 </LinearLayout>

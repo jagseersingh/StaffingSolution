@@ -3,22 +3,18 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    
-    android:background="#3b5998"
-    >
-        
+    android:background="#4879db"
+    >    
     <SearchView
         android:id="@+id/allUserScreen"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:backgroundTint="#fff"
          />
-
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/allUserlistView"
         android:background="#456789"
     />
-
 </LinearLayout>
